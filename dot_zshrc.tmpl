@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,7 +72,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -82,7 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -106,8 +106,73 @@ unsetopt beep
 bindkey -v
 unsetopt autopushd
 bindkey '^R' history-incremental-search-backward
+autoload -Uz compinit
+compinit
+
+if [ -x /usr/bin/thefuck ]; then
+	eval $(thefuck --alias)
+fi
+
+if [ -x /usr/bin/kubectl ]; then
+	source <(kubectl completion zsh)
+fi 
+
+if [ -x /usr/bin/chezmoi ]; then
+	source <(chezmoi completion zsh)
+fi 
 
 
-eval $(thefuck --alias)
-source <(kubectl completion zsh)
-source <(chezmoi completion zsh)
+## Stolen from Garuda
+
+# Load starship prompt if starship is installed
+if [ -x /usr/bin/starship ]; then
+	__main() {
+		local major="${BASH_VERSINFO[0]}"
+		local minor="${BASH_VERSINFO[1]}"
+
+		if ((major > 4)) || { ((major == 4)) && ((minor >= 1)); }; then
+			source <("/usr/bin/starship" init zsh --print-full-init)
+		else
+			source /dev/stdin <<<"$("/usr/bin/starship" init zsh --print-full-init)"
+		fi
+	}
+	__main
+	unset -f __main
+fi
+
+# Advanced command-not-found hook
+source /usr/share/doc/find-the-command/ftc.bash
+
+
+# Replace ls with exa
+alias ls='exa -al --color=always --group-directories-first --icons'     # preferred listing
+alias la='exa -a --color=always --group-directories-first --icons'      # all files and dirs
+alias ll='exa -l --color=always --group-directories-first --icons'      # long format
+alias lt='exa -aT --color=always --group-directories-first --icons'     # tree listing
+alias l.='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+
+# Replace some more things with better alternatives
+alias cat='bat --style header --style snip --style changes --style header'
+[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
+
+# Common use
+alias grubup="sudo update-grub"
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias wget='wget -c '
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='ugrep --color=auto'
+alias fgrep='ugrep -F --color=auto'
+alias egrep='ugrep -E --color=auto'
+alias hw='hwinfo --short'                          # Hardware Info
+alias ip='ip -color'
+
+
