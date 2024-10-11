@@ -108,6 +108,7 @@ unsetopt autopushd
 bindkey '^R' history-incremental-search-backward
 autoload -Uz compinit
 compinit
+setopt correct
 
 if [ -x /usr/bin/thefuck ]; then
 	eval $(thefuck --alias)
@@ -175,4 +176,6 @@ alias egrep='ugrep -E --color=auto'
 alias hw='hwinfo --short'                          # Hardware Info
 alias ip='ip -color'
 
-
+if [ -x /usr/bin/neofetch ]; then
+      neofetch --config 
+fi
