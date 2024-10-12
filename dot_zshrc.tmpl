@@ -155,6 +155,7 @@ alias lt='exa -aT --color=always --group-directories-first --icons'     # tree l
 alias l.='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
 
 # Replace some more things with better alternatives
+[ ! -x /usr/bin/bat ] && [ -x /usr/bin/batcat ] && alias bat='batcat'
 alias cat='bat --style header --style snip --style changes --style header'
 [ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
 
