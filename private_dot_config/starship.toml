@@ -42,9 +42,9 @@ min_time = 1
 ## SECOND LINE/ROW: Prompt
 # Somethere at the beginning
 [battery]
-charging_symbol = ""
-discharging_symbol = ""
-full_symbol = ""
+charging_symbol = "🔌"
+discharging_symbol = "🪫"
+full_symbol = "🔋"
 
 [[battery.display]] # "bold red" style when capacity is between 0% and 15%
 style = "bold red"
