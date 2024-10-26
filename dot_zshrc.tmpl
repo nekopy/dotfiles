@@ -180,6 +180,10 @@ alias egrep='ugrep -E --color=auto'
 alias hw='hwinfo --short'                          # Hardware Info
 alias ip='ip -color'
 
-if [ -x /usr/bin/neofetch ]; then
-      neofetch --config 
+if [ -x /usr/bin/fastfetch ]; then
+      if [ -f ~/neofetch.png ]; then
+	fastfetch -l ~/neofetch.png --logo-width 50
+      else
+	fastfetch
+      fi
 fi
