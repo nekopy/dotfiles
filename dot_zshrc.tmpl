@@ -1,3 +1,4 @@
+# vim: syntax=bash
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -186,4 +187,7 @@ if [ -x /usr/bin/fastfetch ]; then
       else
 	fastfetch
       fi
+elif [ -x /usr/bin/neofetch ]; then
+	neofetch
 fi
+
