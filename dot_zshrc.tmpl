@@ -100,6 +100,7 @@ export EDITOR='nvim'
 
 export PATH=${PATH}:~/.local/bin:~/go/bin:/usr/local/go/bin:/snap/bin:~/bin:~/.local/share/gem/ruby/2.7.0/bin:/opt/nvim-linux64/bin:~/.cargo/bin
 export PATH=${PATH}:~/.local/share/gem/ruby/3.2.0/bin
+export PATH=${PATH}:/opt/cuda/bin
 export GOPATH=~/go
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -111,6 +112,7 @@ bindkey '^R' history-incremental-search-backward
 autoload -Uz compinit
 compinit
 setopt correct
+setopt HIST_IGNORE_SPACE
 
 if [ -x /usr/bin/thefuck ]; then
 	eval $(thefuck --alias)
