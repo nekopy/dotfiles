@@ -114,6 +114,8 @@ compinit
 setopt correct
 setopt HIST_IGNORE_SPACE
 
+# Set up shell completions for shit you have 
+
 if [ -x /usr/bin/thefuck ]; then
 	eval $(thefuck --alias)
 fi
@@ -125,6 +127,12 @@ fi
 if [ -x /usr/bin/chezmoi ]; then
 	source <(chezmoi completion zsh)
 fi 
+
+if [ -x /usr/bin/pyenv ]; then
+	export PYENV_ROOT="$HOME/.pyenv"
+	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
 
 
 ## Stolen from Garuda
@@ -192,4 +200,5 @@ if [ -x /usr/bin/fastfetch ]; then
 elif [ -x /usr/bin/neofetch ]; then
 	neofetch
 fi
+
 
