@@ -134,6 +134,8 @@ if [ -x /usr/bin/pyenv ]; then
 	eval "$(pyenv init -)"
 fi
 
+[[ -d /opt/anaconda/bin ]] && export PATH="$PATH:/opt/anaconda/bin"
+
 
 ## Stolen from Garuda
 
