@@ -136,6 +136,13 @@ fi
 
 [[ -d /opt/anaconda/bin ]] && export PATH="$PATH:/opt/anaconda/bin"
 
+{{ if eq .chezmoi.os "linux" }}
+if [[ -d {{ .chezmoi.homeDir }}/miniforge3/bin ]]; then
+	export PATH="$PATH:{{ .chezmoi.homeDir }}/miniforge3/bin"
+	eval "$({{ .chezmoi.homeDir }}/miniforge3/bin/conda shell.zsh hook)"
+fi
+{{ end }}
+
 
 ## Stolen from Garuda
 
