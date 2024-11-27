@@ -134,6 +134,10 @@ source <(chezmoi completion zsh)
 
 [[ -d /opt/anaconda/bin ]] && export PATH="$PATH:/opt/anaconda/bin"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 {{ if eq .chezmoi.os "linux" }}
 if [[ -d {{ .chezmoi.homeDir }}/miniforge3/bin ]]; then
 	export PATH="$PATH:{{ .chezmoi.homeDir }}/miniforge3/bin"
