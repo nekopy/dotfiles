@@ -1,0 +1,21 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+{{ if not (eq .chezmoi.hostname "Jeffs-MBP") }}
+	email = nekopy@protonmail.com
+{{end}}
+{{ if lookPath "Meld" }}
+[merge]
+	tool = meld
+[mergetool "meld"]
+	cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+{{ end }}
+[credential]
+{{ if eq .chezmoi.hostname "Jeffs-MBP" }}
+	helper = osxkeychain
+{{ else }}
+	helper = keepassxc --git-groups
+{{ end }}

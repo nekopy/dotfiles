@@ -124,10 +124,7 @@ setopt HIST_IGNORE_SPACE
 	source <(kubectl completion zsh)
 {{ end }}
 
-
-if [ -x /usr/bin/chezmoi ]; then
-	source <(chezmoi completion zsh)
-fi 
+source <(chezmoi completion zsh)
 
 {{ if lookPath "pyenv" }}
 	export PYENV_ROOT="$HOME/.pyenv"
