@@ -116,23 +116,24 @@ setopt HIST_IGNORE_SPACE
 
 # Set up shell completions for shit you have 
 
-if [ -x /usr/bin/thefuck ]; then
+{{ if lookPath "thefuck" }}
 	eval $(thefuck --alias)
-fi
+{{ end }}
 
-if [ -x /usr/bin/kubectl ]; then
+{{ if lookPath "kubectl" }}
 	source <(kubectl completion zsh)
-fi 
+{{ end }}
+
 
 if [ -x /usr/bin/chezmoi ]; then
 	source <(chezmoi completion zsh)
 fi 
 
-if [ -x /usr/bin/pyenv ]; then
+{{ if lookPath "pyenv" }}
 	export PYENV_ROOT="$HOME/.pyenv"
 	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
-fi
+{{ end }}
 
 [[ -d /opt/anaconda/bin ]] && export PATH="$PATH:/opt/anaconda/bin"
 
@@ -147,7 +148,7 @@ fi
 ## Stolen from Garuda
 
 # Load starship prompt if starship is installed
-if [ -x /usr/bin/starship ] || [ -x /home/neko/.cargo/bin/starship ]; then
+{{ if lookPath "starship" }}
 	__main() {
 		local major="${BASH_VERSINFO[0]}"
 		local minor="${BASH_VERSINFO[1]}"
@@ -160,7 +161,7 @@ if [ -x /usr/bin/starship ] || [ -x /home/neko/.cargo/bin/starship ]; then
 	}
 	__main
 	unset -f __main
-fi
+{{ end }}
 
 # Advanced command-not-found hook
 if [ -x /usr/share/doc/find-the-command/ftc.zsh ]; then
@@ -168,17 +169,23 @@ if [ -x /usr/share/doc/find-the-command/ftc.zsh ]; then
 fi
 
 
+{{ if lookPath "exa" }}
 # Replace ls with exa
 alias ls='exa -al --color=always --group-directories-first --icons --git'     # preferred listing
 alias la='exa -a --color=always --group-directories-first --icons --git'      # all files and dirs
 alias ll='exa -l --color=always --group-directories-first --icons --git'      # long format
 alias lt='exa -aT --color=always --group-directories-first --icons --git'     # tree listing
 alias l.='exa -ald --color=always --group-directories-first --icons --git .*' # show only dotfiles
+{{ end }}
 
 # Replace some more things with better alternatives
 [ ! -x /usr/bin/bat ] && [ -x /usr/bin/batcat ] && alias bat='batcat'
 alias cat='bat --style header --style snip --style changes --style header'
 [ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
+
+{{ if lookPath "bat" }}
+export PAGER="bat"
+{{ end }}
 
 # Common use
 alias grubup="sudo update-grub"
@@ -200,14 +207,13 @@ alias egrep='ugrep -E --color=auto'
 alias hw='hwinfo --short'                          # Hardware Info
 alias ip='ip -color'
 
-if [ -x /usr/bin/fastfetch ]; then
+{{ if lookPath "fastfetch" }}
       if [ -f ~/neofetch.png ]; then
 	fastfetch -l ~/neofetch.png --logo-width 50
       else
 	fastfetch
       fi
-elif [ -x /usr/bin/neofetch ]; then
+{{ else if lookPath "neofetch" }}
 	neofetch
-fi
-
+{{ end }}
 
