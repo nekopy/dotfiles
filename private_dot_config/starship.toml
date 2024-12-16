@@ -90,6 +90,14 @@ symbol = " "
 [docker_context]
 symbol = " "
 
+[kubernetes]
+format = '[⛵ $context \($namespace\)](dimmed green) '
+disabled = false
+contexts = [
+	{ context_pattern = "prod.*", style = "red", symbol = "P " }
+]
+detect_files = ['k8s']
+
 [elixir]
 symbol = " "
 
