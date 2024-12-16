@@ -96,7 +96,7 @@ disabled = false
 contexts = [
 	{ context_pattern = "prod.*", style = "red", symbol = "P " }
 ]
-detect_files = ['k8s']
+detect_extensions = ['k8s.yaml']
 
 [elixir]
 symbol = " "
