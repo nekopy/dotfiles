@@ -130,6 +130,12 @@ source <(chezmoi completion zsh)
 	eval "$(pyenv init -)"
 {{ end }}
 
+{{ if lookPath "goenv" }}
+	export GOENV_ROOT="$HOME/.goenv"
+	[[ -d $GOENV_ROOT/bin ]] && export PATH="$GOENV_ROOT/bin:$PATH"
+	eval "$(goenv init -)"
+{{ end }}
+
 [[ -d /opt/anaconda/bin ]] && export PATH="$PATH:/opt/anaconda/bin"
 
 export NVM_DIR="$HOME/.nvm"
