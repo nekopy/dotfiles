@@ -229,3 +229,6 @@ alias eris-down="sudo wg-quick down eris"
 	neofetch
 {{ end }}
 
+{{ if stat "/opt/android-sdk/platform-tools" }}
+	export PATH="$PATH:/opt/android-sdk/platform-tools"
+{{ end }}
