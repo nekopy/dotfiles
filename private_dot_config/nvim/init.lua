@@ -105,8 +105,8 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 function GoogleDocProcess()
-	local start_pos = vim.fn.getpos("'<")[2]
-	local end_pos = vim.fn.getpos("'>")[2]
+	local start_pos = vim.fn.line("v")
+	local end_pos = vim.fn.line(".")
 	print(start_pos)
 	print(end_pos)
 
