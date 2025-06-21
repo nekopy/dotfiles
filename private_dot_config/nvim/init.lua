@@ -104,6 +104,21 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+function GoogleDocProcess()
+	local start_pos = vim.fn.getpos("'<")[2]
+	local end_pos = vim.fn.getpos("'>")[2]
+	print(start_pos)
+	print(end_pos)
+
+	vim.cmd(("%d,%ds/\\(^.\\)/\\L\\1/e"):format(start_pos, end_pos))
+	vim.cmd(('%d,%ds/@/"/ge'):format(start_pos, end_pos))
+	vim.cmd(("%d,%ds/[‘’]/'/ge"):format(start_pos, end_pos))
+	vim.cmd(("%d,%ds/…/.../ge"):format(start_pos, end_pos))
+	vim.cmd(("%d,%d>"):format(start_pos, end_pos))
+end
+
+vim.keymap.set("v", "<leader>rc", GoogleDocProcess, { desc = "Update renpy code from the google doc stuff" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
