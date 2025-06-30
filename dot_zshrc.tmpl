@@ -136,6 +136,10 @@ source <(chezmoi completion zsh)
 	eval "$(goenv init -)"
 {{ end }}
 
+{{ if lookPath "gem" }}
+	export PATH="$PATH:$(gem env path)"
+{{ end }}
+
 [[ -d /opt/anaconda/bin ]] && export PATH="$PATH:/opt/anaconda/bin"
 
 export NVM_DIR="$HOME/.nvm"
