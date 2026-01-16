@@ -99,6 +99,7 @@ export EDITOR='nvim'
 export PATH=${PATH}:~/.local/bin:~/go/bin:/usr/local/go/bin:/snap/bin:~/bin:~/.local/share/gem/ruby/2.7.0/bin:/opt/nvim-linux64/bin:~/.cargo/bin
 export PATH=${PATH}:~/.local/share/gem/ruby/3.2.0/bin
 export PATH=${PATH}:/opt/cuda/bin
+export PATH=${PATH}:~/.local/share/nvim/mason/bin
 export GOPATH=~/go
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -127,7 +128,7 @@ source <(chezmoi completion zsh)
 {{ if lookPath "pyenv" }}
 	export PYENV_ROOT="$HOME/.pyenv"
 	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init -)"
+	eval "$(pyenv init - zsh)"
 {{ end }}
 
 {{ if lookPath "goenv" }}
