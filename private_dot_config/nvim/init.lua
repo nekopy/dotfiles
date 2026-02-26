@@ -232,8 +232,8 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 
-			"sindrets/diffview.nvim",
-			-- "esmuellert/codediff.nvim" -- other option for diff
+			-- "sindrets/diffview.nvim",
+			"esmuellert/codediff.nvim", -- other option for diff
 			"nvim-telescope/telescope.nvim",
 		},
 		cmd = "Neogit",
