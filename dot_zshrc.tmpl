@@ -102,6 +102,11 @@ export PATH=${PATH}:~/.local/share/gem/ruby/3.2.0/bin
 export PATH=${PATH}:/opt/cuda/bin
 export PATH=${PATH}:~/.local/share/nvim/mason/bin
 export GOPATH=~/go
+
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+	export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
