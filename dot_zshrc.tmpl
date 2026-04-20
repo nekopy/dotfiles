@@ -276,5 +276,8 @@ fi
 # <<< conda initialize <<<
 {{ end }}
 
-[-f "{{.chezmoi.homeDir}}/.ghcup/env" ] && . "{{ .chezmoi.homeDir }}/.ghcup/env"
+[ -f "{{.chezmoi.homeDir}}/.ghcup/env" ] && . "{{ .chezmoi.homeDir }}/.ghcup/env"
 
+{{ if lookPath "pipx" }}
+	pipx ensurepath
+{{ end }}
