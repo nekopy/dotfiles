@@ -278,6 +278,7 @@ fi
 
 [ -f "{{.chezmoi.homeDir}}/.ghcup/env" ] && . "{{ .chezmoi.homeDir }}/.ghcup/env"
 
-{{ if lookPath "pipx" }}
-	pipx ensurepath
+
+{{ if lookPath "gem" }}
+export PATH="$PATH:$(gem environment user_gemhome)/bin"
 {{ end }}
