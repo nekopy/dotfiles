@@ -526,7 +526,6 @@ require("lazy").setup({
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				ts_ls = {},
-        tree-sitter-cli = {},
 				terraformls = {},
 
 				lua_ls = {
@@ -556,6 +555,8 @@ require("lazy").setup({
 					},
 				},
 			}
+
+			servers["tree-sitter-cli"] = {}
 
 			-- Ensure the servers and tools above are installed
 			--  To check the current status of installed tools and/or manually install
