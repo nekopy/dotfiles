@@ -17,5 +17,11 @@ return {
 			-- You can configure highlights by doing something like
 			vim.cmd.hi("Comment gui=none")
 		end,
+		transparent_background = true,
+		flavor = "macchiato",
+		integrations = {
+			gitsigns = true,
+			blink_cmp = true,
+		},
 	},
 }

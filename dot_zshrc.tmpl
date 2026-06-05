@@ -235,9 +235,9 @@ alias eris-down="sudo wg-quick down eris"
 
 {{ if lookPath "fastfetch" }}
       if [ -f ~/neofetch.png ]; then
-	fastfetch -l ~/neofetch.png --logo-width 50
+	fastfetch -l ~/neofetch.png --logo-width 50 --disable-linewrap true
       else
-	fastfetch
+	fastfetch --disable-linewrap true
       fi
 {{ else if lookPath "neofetch" }}
 	neofetch

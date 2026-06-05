@@ -68,6 +68,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Needed for the obsidian plugin
+vim.opt.conceallevel = 2
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -112,5 +115,8 @@ require("autocmds")
 require("custom-commands")
 require("langs.go")
 require("lazyup")
+
+-- has to happen late boo
+vim.cmd.colorscheme("catppuccin-nvim")
 
 -- vim: ts=2 sts=2 sw=2 et
