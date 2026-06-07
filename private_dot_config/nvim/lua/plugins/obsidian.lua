@@ -7,6 +7,7 @@ return {
 		legacy_commands = false,
 		picker = {
 			name = "telescope.nvim",
+			version = "*",
 		},
 		workspaces = {
 			{
