@@ -93,6 +93,16 @@ return {
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
+
+			vim.keymap.set("n", "<leader>so", function()
+				builtin.find_files({ cwd = "/home/neko/Sync/Obsidian/personal" })
+			end, { desc = "[S]earch [O]bsidian notes" })
+
+			function planets()
+				builtin.planets({ show_moon = true })
+			end
+
+			vim.keymap.set("n", "<leader>ss", planets, { desc = "[S]earch [S]pace" })
 		end,
 	},
 }
